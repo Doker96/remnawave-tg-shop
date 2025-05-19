@@ -284,7 +284,7 @@ async def my_subscription_command_handler(
         if settings.MINIAPP_URL:
             config_text = ""
         else:
-            config_text=f"\n\n🔗 Link: <code>{actual_config_link}</code>"
+            config_text=f"\n\n{get_translation('sub_link')}: <code>{actual_config_link}</code>"
 
         sub_info_text = get_translation(
             "my_subscription_details",
