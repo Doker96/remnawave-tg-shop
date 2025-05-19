@@ -281,6 +281,11 @@ async def my_subscription_command_handler(
         if active_sub.get('traffic_used_bytes') is not None:
             traffic_used_gb = f"{active_sub['traffic_used_bytes'] / (1024**3):.2f} GB"
 
+        if settings.MINIAPP_URL:
+            config_text = ""
+        else:
+            config_text=f"\n\n🔗 Link: <code>{actual_config_link}</code>"
+
         sub_info_text = get_translation(
             "my_subscription_details",
             end_date=end_date_obj.strftime("%Y-%m-%d"),
@@ -288,16 +293,18 @@ async def my_subscription_command_handler(
             status=active_sub.get(
                 'status_from_panel',
                 get_translation('status_active')).capitalize(),
-            config_link=actual_config_link,
+            config_link=config_text,
             traffic_limit=traffic_limit_gb,
             traffic_used=traffic_used_gb)
     else:
         sub_info_text = get_translation("subscription_not_active")
 
     builder = InlineKeyboardBuilder()
-    if settings.MINIAPP_URL:
-        miniapp_url = types.WebAppInfo(url=settings.MINIAPP_URL)
-        builder.button(text=get_translation("menu_open_miniapp_button"), web_app=miniapp_url)
+    if active_sub:
+        if settings.MINIAPP_URL:
+            miniapp_url = types.WebAppInfo(url=settings.MINIAPP_URL)
+            builder.button(text=get_translation("menu_open_miniapp_button"), web_app=miniapp_url)
+
     builder.button(text=get_translation("back_to_main_menu_button"), callback_data="main_action:back_to_main")
     reply_markup_val = builder.as_markup()
 
