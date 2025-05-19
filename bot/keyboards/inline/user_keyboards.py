@@ -102,6 +102,10 @@ def get_subscription_options_keyboard(subscription_options: Dict[
                 builder.button(text=button_text,
                                callback_data=f"subscribe_period:{months}")
         builder.adjust(1)
+    if settings.MINIAPP_URL:
+        builder.row(
+            InlineKeyboardButton(text=_(key="miniapp_button"),
+                                 url=settings.MINIAPP_URL))
     builder.row(
         InlineKeyboardButton(text=_(key="back_to_main_menu_button"),
                              callback_data="main_action:back_to_main"))

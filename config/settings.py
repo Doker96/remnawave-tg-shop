@@ -24,6 +24,8 @@ class Settings(BaseSettings):
         description="Link to server status page (e.g., Uptime Kuma)")
     TERMS_OF_SERVICE_URL: Optional[str] = Field(
         default=None, description="Link to Terms of Use page")
+    MINIAPP_URL: Optional[str] = Field(
+        default=None, description="Link to MiniApp")
 
     YOOKASSA_SHOP_ID: Optional[str] = None
     YOOKASSA_SECRET_KEY: Optional[str] = None
