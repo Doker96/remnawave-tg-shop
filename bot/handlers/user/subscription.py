@@ -12,7 +12,7 @@ from config.settings import Settings
 from db.database import add_payment_record, get_db_connection_manager, _setup_db_connection
 from bot.keyboards.inline.user_keyboards import (
     get_subscription_options_keyboard, get_confirm_subscription_keyboard,
-    get_payment_url_keyboard, get_back_to_main_menu_markup)
+    get_payment_url_keyboard, get_back_to_main_menu_markup, miniapp_button)
 from bot.services.payment_service import YooKassaService
 from bot.services.subscription_service import SubscriptionService
 from bot.services.panel_api_service import PanelApiService

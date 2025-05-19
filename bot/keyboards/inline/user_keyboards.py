@@ -153,7 +153,8 @@ def get_back_to_main_menu_markup(lang: str,
     return builder.as_markup()
 
 def miniapp_button(lang: str,
-                                 i18n_instance) -> InlineKeyboardMarkup:
+                   i18n_instance,
+                   settings: Settings) -> InlineKeyboardMarkup:
     _ = lambda key, **kwargs: i18n_instance.gettext(lang, key, **kwargs)
     builder = InlineKeyboardBuilder()
     if settings.MINIAPP_URL:
