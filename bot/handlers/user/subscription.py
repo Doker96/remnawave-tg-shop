@@ -291,6 +291,7 @@ async def my_subscription_command_handler(
             config_link=actual_config_link,
             traffic_limit=traffic_limit_gb,
             traffic_used=traffic_used_gb)
+        reply_markup_val = miniapp_button(current_lang, i18n)
     else:
         sub_info_text = get_translation("subscription_not_active")
 
