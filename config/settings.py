@@ -26,7 +26,7 @@ class Settings(BaseSettings):
         default=None, description="Link to Terms of Use page")
     MINIAPP_URL: Optional[str] = Field(
         default=None, description="Link to MiniApp")
-
+    
     YOOKASSA_SHOP_ID: Optional[str] = None
     YOOKASSA_SECRET_KEY: Optional[str] = None
     YOOKASSA_WEBHOOK_BASE_URL: Optional[str] = None

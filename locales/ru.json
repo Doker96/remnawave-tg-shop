@@ -11,6 +11,7 @@
 
   "menu_subscribe_inline": "🚀 Купить",
   "menu_my_subscription_inline": "📆 Моя подписка",
+  "menu_open_miniapp_button": "📱 Открыть подписку",
   "menu_referral_inline": "🎁 Рефералы",
   "menu_apply_promo_button": "🎁 Промокод",
   "menu_activate_trial_button": "🆓 Пробный период",
@@ -19,7 +20,6 @@
   "menu_support_button": "💬 Поддержка",
   "menu_terms_button": "📄 Условия сервиса",
   "back_to_main_menu_button": "⬅️ Назад",
-  "miniapp_button": "🚀 Моя подписка",
 
   "no_subscription_options_available": "Варианты подписки сейчас недоступны.",
   "select_subscription_period": "Выберите период подписки:",
@@ -35,7 +35,7 @@
   "payment_successful": "✅ Оплата успешна! Ваша подписка на <b>{months} мес.</b> активна до <b>{end_date}</b>.",
   "payment_failed": "❌ Оплата не удалась/отменена. Если деньги списаны, напишите в поддержку.",
   "payment_description_subscription": "Подписка на {months} мес.",
-  "my_subscription_details": "ℹ️ <b>Ваша подписка</b>\n\n🗓️ До: <b>{end_date}</b> (Дней осталось: {days_left})\n\n🔗 Ссылка: <code>{config_link}</code>\n\n📊 Трафик: {traffic_used} / {traffic_limit}\n💡 Статус: {status}",
+  "my_subscription_details": "ℹ️ <b>Ваша подписка</b>\n\n🗓️ До: <b>{end_date}</b> (Дней осталось: {days_left})\n\n📊 Трафик: {traffic_used} / {traffic_limit}\n💡 Статус: {status}",
   "subscription_not_active": "Активной подписки нет. Оформите сейчас!",
   "config_link_not_available": "Н/Д (Попробуйте /sync или поддержка)",
   "traffic_unlimited": "Безлимит",

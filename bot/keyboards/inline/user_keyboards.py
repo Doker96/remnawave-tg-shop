@@ -152,17 +152,6 @@ def get_back_to_main_menu_markup(lang: str,
                    callback_data="main_action:back_to_main")
     return builder.as_markup()
 
-def miniapp_button(lang: str,
-                   i18n_instance,
-                   settings: Settings) -> InlineKeyboardMarkup:
-    _ = lambda key, **kwargs: i18n_instance.gettext(lang, key, **kwargs)
-    builder = InlineKeyboardBuilder()
-    if settings.MINIAPP_URL:
-        builder.row(
-            InlineKeyboardButton(text=_(key="miniapp_button"),
-                                 url=settings.MINIAPP_URL))
-    return builder.as_markup()
-
 
 def get_user_banned_keyboard(support_link: Optional[str], lang: str,
                              i18n_instance) -> Optional[InlineKeyboardMarkup]:

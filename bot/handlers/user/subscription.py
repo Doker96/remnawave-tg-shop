@@ -6,13 +6,13 @@ from aiogram.fsm.context import FSMContext
 from typing import Optional, Dict, Any
 from datetime import datetime, timezone
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from aiogram.types import InlineKeyboardMarkup
+from aiogram.types import InlineKeyboardMarkup, WebAppInfo
 
 from config.settings import Settings
 from db.database import add_payment_record, get_db_connection_manager, _setup_db_connection
 from bot.keyboards.inline.user_keyboards import (
     get_subscription_options_keyboard, get_confirm_subscription_keyboard,
-    get_payment_url_keyboard, get_back_to_main_menu_markup, miniapp_button)
+    get_payment_url_keyboard, get_back_to_main_menu_markup)
 from bot.services.payment_service import YooKassaService
 from bot.services.subscription_service import SubscriptionService
 from bot.services.panel_api_service import PanelApiService
@@ -291,11 +291,16 @@ async def my_subscription_command_handler(
             config_link=actual_config_link,
             traffic_limit=traffic_limit_gb,
             traffic_used=traffic_used_gb)
-        reply_markup_val = miniapp_button(current_lang, i18n)
     else:
         sub_info_text = get_translation("subscription_not_active")
 
-    reply_markup_val = get_back_to_main_menu_markup(current_lang, i18n)
+    builder = InlineKeyboardBuilder()
+    if settings.MINIAPP_URL:
+        miniapp_url = types.WebAppInfo(url=settings.MINIAPP_URL)
+        builder.button(text=get_translation("menu_open_miniapp_button"), web_app=miniapp_url)
+    builder.button(text=get_translation("back_to_main_menu_button"), callback_data="main_action:back_to_main")
+    reply_markup_val = builder.as_markup()
+
     if isinstance(message_event,
                   types.CallbackQuery) and message_event.message:
         try:
